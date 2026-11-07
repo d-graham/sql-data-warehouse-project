@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Data / local files you don't want tracked
+*.db
+*.sqlite3
+.DS_Store
