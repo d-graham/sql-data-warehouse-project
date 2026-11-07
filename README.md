@@ -1,9 +1,14 @@
-'SQL Data Warehouse from Scratch' (from Data with Baraa)
+# 'SQL Data Warehouse from Scratch'
+Build a data warehouse with postgresql, including ETL processes, data modeling, and analytics.
+From data with Baraa. Modifying source material SQL Server to my workflow using postresql.
+
+----
 
 Resources:
 YouTube https://www.youtube.com/watch?v=9GVqKuTVANE
 Github https://github.com/DataWithBaraa/sql-data-warehouse-project
 Notion https://www.notion.com/templates/sql-data-warehouse-project
+
 
 
 
