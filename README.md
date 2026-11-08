@@ -1,4 +1,4 @@
-# 'SQL Data Warehouse from Scratch'
+# SQL Data Warehouse from Scratch
 Build a data warehouse with postgresql, including ETL processes, data modeling, and analytics.
 From data with Baraa. Modifying source material SQL Server to my workflow using postresql.
 
