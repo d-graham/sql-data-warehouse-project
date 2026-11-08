@@ -1,0 +1,23 @@
+/*
+Bronze loaded with \copy
+
+Guided video is based on SQL Server loading data using BULK INSERT method.
+Accomodating postgresql workflow, loaded the data using an sh script with the \copy method for convenience with vscode workflow (sending credentials).
+Could also have approached with a python script but for convenience in this project \copy sufficed
+
+psql -h localhost -d datawarehouse -U user_account <<EOF
+TRUNCATE TABLE bronze.crm_cust_info;
+\copy bronze.crm_cust_info FROM 'your/local/path/00_datasets/source_crm/cust_info.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',')
+TRUNCATE TABLE bronze.crm_prd_info;
+\copy bronze.crm_prd_info FROM 'your/local/path/00_datasets/source_crm/prd_info.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',')
+TRUNCATE TABLE bronze.crm_sales_details;
+\copy bronze.crm_sales_details FROM 'your/local/path/00_datasets/source_crm/sales_details.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',')
+TRUNCATE TABLE bronze.erp_cust_az12;
+\copy bronze.erp_cust_az12 FROM 'your/local/path/00_datasets/source_erp/CUST_AZ12.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',')
+TRUNCATE TABLE bronze.erp_loc_a101;
+\copy bronze.erp_loc_a101 FROM 'your/local/path/00_datasets/source_erp/LOC_A101.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',')
+TRUNCATE TABLE bronze.erp_px_cat_g1v2;
+\copy bronze.erp_px_cat_g1v2 FROM 'your/local/path/00_datasets/source_erp/PX_CAT_G1V2.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',')
+EOF
+
+*/
