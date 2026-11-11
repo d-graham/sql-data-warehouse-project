@@ -98,3 +98,23 @@ CASE WHEN sls_price IS NULL OR sls_price <= 0 -- cleaning valid sales, product, 
     ELSE sls_price
 END AS sls_price
 FROM bronze.crm_sales_details;
+
+
+
+-- Transformation query developed in 'data_quality_erp_cust_az12_bronze.sql'
+INSERT INTO silver.erp_cust_az12 (
+cid,
+bdate,
+gen)
+SELECT
+CASE WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LENGTH(cid))
+    ELSE cid
+END cid,
+CASE WHEN bdate > CURRENT_DATE THEN NULL
+    ELSE bdate
+END AS bdate,
+CASE WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
+    WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
+    ELSE 'n/a'
+END AS gen
+FROM bronze.erp_cust_az12;
