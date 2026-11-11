@@ -27,3 +27,11 @@ Specifications
 * Scope: Focus on the latest dataset only; historization of data is not required
 * Documentation: Provide clear documentation of the data model to support both business stakeholders and analytics teams
 
+
+
+Friction points
+* Translating SQL Server to PostgreSQL
+* SQL Server provides programmability for load scripts with tracking of load times, records loaded, and tests.
+  Chose to load postgres at terminal using a bash script to handle server credential simply, with repeatable convenience.
+  Python is a better fit for this friction point to include tests and collect information, left out respectful project scope as a SQL exercise.
+
