@@ -5,6 +5,12 @@ Guided video is based on SQL Server loading data using BULK INSERT method.
 Accomodating postgresql workflow, loaded the data using an sh script with the \copy method for convenience with vscode workflow (sending credentials).
 Could also have approached with a python script but for convenience in this project \copy sufficed
 
+# Script exclusion added to .gitignore "*.local.sh"
+# Exclusion to avoid upload of user name or local path details to github.
+# Load bronze CSVs. Run from anywhere; uses absolute paths.
+# Open in terminal and make script executable by: chmod +x load_bronze.local.sh
+# Run script with ./load_bronze.local.sh
+
 psql -h localhost -d datawarehouse -U user_account <<EOF
 TRUNCATE TABLE bronze.crm_cust_info;
 \copy bronze.crm_cust_info FROM 'your/local/path/00_datasets/source_crm/cust_info.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',')
