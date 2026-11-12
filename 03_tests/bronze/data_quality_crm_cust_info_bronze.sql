@@ -1,13 +1,29 @@
-
 /* 
 Data Quality Checks
-Source: crm_cust_info (bronze) 
-Expected grain: One row per customer (unique cst_id)
- */
+Checking bronze.crm_cust_info
+Grain: One row per customer (cst_id)
+
+Script Purpose:
+    This script performs quality checks for data consistency, accuracy,
+    and standardization across the 'bronze' schema. The transformations
+    used to load silver are built up from the observations of those checks.
+    
+    It includes checks for:
+    - Null or duplicate primary keys
+    - Unwanted spaces in string fields
+    - Data standardization and consistency
+    - Invalid date ranges and orders
+    - Data consistency between related fields
+
+Usage Notes:
+    - Run these checks after data loading Bronze layer
+    - Investige and resolve any discrepencies found during the checks
+    - Appended at bottom of script are the data transformations built up for loading Silver
+*/
 
 SELECT * FROM bronze.crm_cust_info LIMIT 100;
 
--- Check for NULLs or duplicates in Primary Key
+-- Check for NULLs or duplicates in primary key
 -- Expectation: One row per customer w/o duplications or nulls
 
 SELECT cst_id, COUNT(*) 

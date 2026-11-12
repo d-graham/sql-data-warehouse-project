@@ -1,9 +1,25 @@
-
 /* 
 Data Quality Checks
-Source: erp_cust_az12 (bronze) 
-Expected grain: One row per customer id (cid)
- */
+Checking bronze.erp_cust_az12
+Grain: One row per customer id (cid)
+
+Script Purpose:
+    This script performs quality checks for data consistency, accuracy,
+    and standardization across the 'bronze' schema. The transformations
+    used to load silver are built up from the observations of those checks.
+    
+    It includes checks for:
+    - Null or duplicate primary keys
+    - Unwanted spaces in string fields
+    - Data standardization and consistency
+    - Invalid date ranges and orders
+    - Data consistency between related fields
+
+Usage Notes:
+    - Run these checks after data loading Bronze layer
+    - Investige and resolve any discrepencies found during the checks
+    - Appended at bottom of script are the data transformations built up for loading Silver
+*/
 
 SELECT * FROM bronze.erp_cust_az12 LIMIT 100;
 

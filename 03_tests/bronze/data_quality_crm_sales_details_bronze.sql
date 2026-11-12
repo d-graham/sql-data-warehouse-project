@@ -1,9 +1,25 @@
-
 /* 
 Data Quality Checks
-Source: crm_sales_details (bronze) 
-Expected grain: One row per sales order number (sls_ord_num) and sales product key (sls_prd_key) combination
- */
+Checking bronze.crm_sales_details
+Grain: One row per sales order number (sls_ord_num) and sales product key (sls_prd_key) combination
+
+Script Purpose:
+    This script performs quality checks for data consistency, accuracy,
+    and standardization across the 'bronze' schema. The transformations
+    used to load silver are built up from the observations of those checks.
+    
+    It includes checks for:
+    - Null or duplicate primary keys
+    - Unwanted spaces in string fields
+    - Data standardization and consistency
+    - Invalid date ranges and orders
+    - Data consistency between related fields
+
+Usage Notes:
+    - Run these checks after data loading Bronze layer
+    - Investige and resolve any discrepencies found during the checks
+    - Appended at bottom of script are the data transformations built up for loading Silver
+*/
 
 SELECT * FROM bronze.crm_sales_details LIMIT 100;
 
