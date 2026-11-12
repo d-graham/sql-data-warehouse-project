@@ -2,6 +2,7 @@
 -- Transformation queries developed in ../03_tests/
 
 
+TRUNCATE TABLE silver.crm_cust_info;
 -- Transformation query developed in 'data_quality_crm_cust_info_bronze.sql'
 INSERT INTO silver.crm_cust_info (
     cst_id,
@@ -36,6 +37,7 @@ FROM ranked_crm_cust_info
 WHERE flag_last = 1 AND cst_id IS NOT NULL; -- Select the most recent record per customer, and exclude null cst_id
 
 
+TRUNCATE TABLE silver.crm_prd_info;
 -- Transformation query developed in 'data_quality_crm_prd_info_bronze.sql'
 INSERT INTO silver.crm_prd_info (
     prd_id,
@@ -64,6 +66,7 @@ LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)-1 AS prd_en
 FROM bronze.crm_prd_info;
 
 
+TRUNCATE TABLE silver.crm_sales_details;
 -- Transformation query developed in 'data_quality_crm_prd_sales_details_bronze.sql'
 INSERT INTO silver.crm_sales_details (
     sls_ord_num,
@@ -100,7 +103,7 @@ END AS sls_price
 FROM bronze.crm_sales_details;
 
 
-
+TRUNCATE TABLE silver.erp_cust_az12;
 -- Transformation query developed in 'data_quality_erp_cust_az12_bronze.sql'
 INSERT INTO silver.erp_cust_az12 (
 cid,
@@ -119,6 +122,7 @@ CASE WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
 END AS gen
 FROM bronze.erp_cust_az12;
 
+TRUNCATE TABLE silver.erp_loc_a101;
 -- Transformation query developed in 'data_quality_erp_cust_az12_bronze.sql'
 INSERT INTO silver.erp_loc_a101 (
 cid,
@@ -132,7 +136,7 @@ CASE WHEN TRIM(cntry) = 'DE' THEN 'Germany'
 END AS cntry
 FROM bronze.erp_loc_a101;
 
-
+TRUNCATE TABLE silver.erp_px_cat_g1v2;
 -- No transformations necessary, clean data in this table
 INSERT INTO silver.erp_px_cat_g1v2 (
 id,
