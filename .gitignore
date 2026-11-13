@@ -9,4 +9,4 @@ venv/
 *.db
 *.sqlite3
 .DS_Store
-*.loca.sh
+*.local.sh
